@@ -1,3 +1,5 @@
+
+#day one part 1
 def Fuel ():
     f = open('modules.txt', 'r')
     s = f.read()
