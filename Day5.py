@@ -29,6 +29,24 @@ def opcodefunc (t, theinput):
         elif op == 4:
             print(get(t[i+1], m1))
             i=i+2
+        elif op == 5:
+            if get(t[i+1], m1) != 0:
+                i = get(t[i+2], m2)
+            else: i = i+3
+        elif op == 6:
+            if get(t[i+1], m1) == 0:
+                i = get(t[i+2], m2)
+            else: i = i+3
+        elif op == 7:
+            if get(t[i+1], m1) < get(t[i+2], m2):
+                t[t[i+3]] = 1
+            else: t[t[i+3]] = 0
+            i = i + 4
+        elif op == 8:
+            if get(t[i+1], m1) == get(t[i+2], m2):
+                t[t[i+3]] = 1
+            else: t[t[i+3]] = 0
+            i = i + 4
         else:
             print('unknown opcode', t[i])
             break
@@ -53,8 +71,18 @@ def day5part1 ():
     t = [ int(s) for s in s.split(',')]
     opcodefunc(t, 1)
 
+
+def day5part2 ():
+    f = open('day5input.txt', 'r')
+    s = f.read()
+    t = [ int(s) for s in s.split(',')]
+    opcodefunc(t, 5)
+    
+
 day2part1()
 
 day5part1()
+
+day5part2()
 
 
