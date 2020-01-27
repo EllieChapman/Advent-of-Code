@@ -39,20 +39,25 @@ def orbits2():
         pair.append([s[0:3], s[4:]])
 
 
-    di = {'COM': []}
-    while len(pair)>0:
-        temp = []
-        for i in pair:
-            if i[0] in di:
-                di[i[0]].append(i[1])
-                di[i[1]] = []
-            else:
-                temp.append(i)
-        pair = temp
+    #key is planet, value is what it orbits, so 1 to 1
+    odi = {}
+    for i in pair:
+        odi[i[1]] = i[0]
 
-    #print(di)
 
-    
-    
+    def pathcount(n):
+        if n == 'COM':
+            return [n]
+        else:
+            n2 = odi[n]
+            return pathcount(n2) + [n]
+
+    y = pathcount('YOU')
+    s = pathcount('SAN')
+
+    for i in range(0, len(y)):
+        if y[i] != s[i]:
+            print((len(y)-1-i) + (len(s)-1-i))
+            break
 
     
